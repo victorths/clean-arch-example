@@ -8,4 +8,8 @@ class CartController extends PageLifeCycleController<CartStore> {
 
   @override
   final CartStore store;
+
+  void checkout() {
+    store.itemsOnCart.clear();
+  }
 }

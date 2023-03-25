@@ -1,5 +1,7 @@
 import '../../../commons/commons.dart';
 import 'cart_controller.dart';
+import 'widgets/cart_item_list.dart';
+import 'widgets/empty_cart_panel.dart';
 
 class CartWidget extends StatefulWidget {
   const CartWidget({super.key});
@@ -20,8 +22,49 @@ class _CartWidgetState extends ModularInjector<CartWidget, CartController> {
           ),
         ),
       ),
-      body: const Center(
-        child: Text('This is CART'),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16,
+                vertical: 16,
+              ),
+              child: Obx(
+                () => Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Text(
+                      'Meu carrinho',
+                      style: Theme.of(context).textTheme.headlineSmall,
+                    ),
+                    Expanded(
+                      child: controller.store.itemsOnCartCount > 0
+                          ? const CartItemList()
+                          : const EmptyCartPanel(),
+                    ),
+                    CustomFilledButtom(
+                      size: CustomFilledButtomSize.large,
+                      onPressed: () {
+                        if (controller.store.itemsOnCartCount > 0) {
+                          controller.checkout();
+                          showToast(context, 'Compra realizada com sucesso!');
+                        } else {
+                          Navigator.of(context).pop();
+                        }
+                      },
+                      text: controller.store.itemsOnCartCount > 0
+                          ? 'Concluir compra'
+                          : 'Ver produtos',
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          const PageFooter(),
+        ],
       ),
     );
   }

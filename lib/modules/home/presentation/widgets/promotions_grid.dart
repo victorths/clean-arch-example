@@ -108,7 +108,7 @@ class PromotionItem extends StatelessWidget {
           children: [
             Text(
               promotion.price!.formatNumber,
-              style: Theme.of(context).textTheme.titleMedium,
+              style: Theme.of(context).textTheme.titleLarge,
             ),
             if (promotion.discount != null)
               Row(
@@ -138,15 +138,12 @@ class PromotionItem extends StatelessWidget {
         const Expanded(
           child: SizedBox(),
         ),
-        SizedBox(
-          width: double.infinity,
-          child: FilledButton(
-            onPressed: () {
-              onAddItemToCart(promotion);
-              showToast(context, 'Produto adicionado ao carrinho');
-            },
-            child: const Text('Comprar'),
-          ),
+        CustomFilledButtom(
+          onPressed: () {
+            onAddItemToCart(promotion);
+            showToast(context, 'Produto adicionado ao carrinho');
+          },
+          text: 'Comprar',
         )
       ],
     );

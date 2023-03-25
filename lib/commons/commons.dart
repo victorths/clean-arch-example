@@ -17,6 +17,7 @@ export 'domain/entities/enums.dart';
 export 'presentation/controllers/page_life_cycle_controller.dart';
 export 'presentation/navigation/routes.dart';
 export 'presentation/stores/state_store.dart';
+export 'presentation/widgets/custom_filled_buttom.dart';
 export 'presentation/widgets/footer.dart';
 export 'presentation/widgets/skeleton_container.dart';
 export 'utils/assets.dart';

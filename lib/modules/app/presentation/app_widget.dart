@@ -29,9 +29,21 @@ class AppWidget extends StatelessWidget {
           scrim: Color(0xFF00AD1D),
         ),
         textTheme: const TextTheme(
-          titleMedium: TextStyle(
+          headlineSmall: TextStyle(
+            fontWeight: FontWeight.w500,
+            fontSize: 24,
+            height: 1.2,
+            color: Color(0xFF1A1A1A),
+          ),
+          titleLarge: TextStyle(
             fontWeight: FontWeight.w500,
             fontSize: 18,
+            height: 1.2,
+            color: Color(0xFF1A1A1A),
+          ),
+          titleMedium: TextStyle(
+            fontWeight: FontWeight.w500,
+            fontSize: 16,
             height: 1.2,
             color: Color(0xFF1A1A1A),
           ),
@@ -62,14 +74,6 @@ class AppWidget extends StatelessWidget {
         ),
         iconTheme: const IconThemeData(
           color: Color(0xFFE30000),
-        ),
-        filledButtonTheme: FilledButtonThemeData(
-          style: FilledButton.styleFrom(
-            padding: const EdgeInsets.symmetric(vertical: 8),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(4),
-            ),
-          ),
         ),
       ),
       routeInformationParser: Modular.routeInformationParser,
