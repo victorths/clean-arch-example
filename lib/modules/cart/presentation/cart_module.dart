@@ -1,7 +1,6 @@
-import 'package:eng_gruposbf_mobile_flutter/modules/cart/cart_controller.dart';
-import 'package:eng_gruposbf_mobile_flutter/modules/cart/cart_widget.dart';
-
-import '../../commons/commons.dart';
+import '../../../commons/commons.dart';
+import 'cart_controller.dart';
+import 'cart_widget.dart';
 
 class CartModule extends Module {
   @override

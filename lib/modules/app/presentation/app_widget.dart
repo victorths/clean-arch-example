@@ -12,6 +12,7 @@ class AppWidget extends StatelessWidget {
 
     return OKToast(
       position: ToastPosition.top,
+      duration: 3.seconds,
       textPadding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
       child: MaterialApp.router(
         title: 'Centauro',
@@ -21,9 +22,9 @@ class AppWidget extends StatelessWidget {
             brightness: Brightness.light,
             primary: Color(0xFFE30000),
             onPrimary: Colors.white,
-            secondary: Color(0xFF4D4D4D),
+            secondary: Color(0xFF465A64),
             onSecondary: Colors.white,
-            error: Color(0xFF4D4D4D),
+            error: Color(0xFF465A64),
             onError: Colors.white,
             background: Colors.white,
             onBackground: Color(0xFFD6D6D6),
@@ -31,10 +32,20 @@ class AppWidget extends StatelessWidget {
             onSurface: Color(0xFFE30000),
           ),
           textTheme: const TextTheme(
+            labelMedium: TextStyle(
+              fontSize: 11,
+              fontWeight: FontWeight.w500,
+            ),
             bodyLarge: TextStyle(
               fontWeight: FontWeight.w400,
               fontSize: 14,
               color: Color(0xFF999999),
+            ),
+            bodySmall: TextStyle(
+              fontWeight: FontWeight.w400,
+              fontSize: 12,
+              color: Color(0xFF1A1A1A),
+              height: 1.5,
             ),
             labelSmall: TextStyle(
               fontWeight: FontWeight.w600,

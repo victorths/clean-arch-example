@@ -1,4 +1,8 @@
+import 'package:eng_gruposbf_mobile_flutter/modules/home/data/infra/product_datasouce.dart';
+import 'package:eng_gruposbf_mobile_flutter/modules/home/domain/use_cases/get_promotions.dart';
+
 import '../../../commons/commons.dart';
+import '../data/repositories/product_repository.dart';
 import 'home_controller.dart';
 import 'home_store.dart';
 import 'home_widget.dart';
@@ -10,6 +14,13 @@ class HomeModule extends Module {
           (i) => HomeController(
             store: HomeStore(),
             cartStore: i(),
+            getPromotionsUseCase: GetPromotionsUseCaseImpl(
+              repository: ProductRepositoryImpl(
+                datasource: ProductDatasource(
+                  remoteDatasource: i(),
+                ),
+              ),
+            ),
           ),
         ),
       ];

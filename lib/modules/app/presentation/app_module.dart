@@ -1,9 +1,9 @@
-import 'package:eng_gruposbf_mobile_flutter/modules/cart/cart_store.dart';
+import 'package:eng_gruposbf_mobile_flutter/commons/data/infra/dio_datasource.dart';
 
 import '../../../commons/commons.dart';
-import '../../cart/cart_module.dart';
+import '../../cart/presentation/cart_module.dart';
+import '../../cart/presentation/cart_store.dart';
 import '../../home/presentation/home_module.dart';
-import 'app_page.dart';
 
 class AppModule extends Module {
   @override
@@ -12,23 +12,20 @@ class AppModule extends Module {
         Bind.singleton(
           (i) => CartStore(),
         ),
+        Bind.singleton<RemoteDatasource>(
+          (i) => DioDatasource(),
+        ),
       ];
 
   @override
   List<ModularRoute> get routes => [
-        ChildRoute(
-          Paths.root,
-          child: (context, args) => const AppPage(),
-          children: [
-            ModuleRoute(
-              Paths.home,
-              module: HomeModule(),
-            ),
-            ModuleRoute(
-              Paths.cart,
-              module: CartModule(),
-            ),
-          ],
+        ModuleRoute(
+          Paths.home,
+          module: HomeModule(),
+        ),
+        ModuleRoute(
+          Paths.cart,
+          module: CartModule(),
         ),
       ];
 }

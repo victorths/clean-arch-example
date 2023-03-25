@@ -8,22 +8,17 @@ import '../../domain/entities/enums.dart';
 abstract class StateStore {
   final Rx<StateStoreStatus> _status =
       Rx<StateStoreStatus>(StateStoreStatus.loading);
-  final Rxn<String?> _error = Rxn<String>();
+  final Rxn<Exception?> _error = Rxn<Exception>();
 
   StateStoreStatus get status => _status.value;
   Rx<StateStoreStatus> get rxStatus => _status;
-  String? get error => _error.value;
-  Rx<String?> get rxError => _error;
+  Exception? get error => _error.value;
+  Rx<Exception?> get rxError => _error;
 
   set status(StateStoreStatus value) => _status.value = value;
-  set error(String? value) {
+  set error(Exception? value) {
+    error = error;
     _status.value = StateStoreStatus.error;
-    if (value != null && value.isNotEmpty) {
-      if (!Platform.environment.containsKey('FLUTTER_TEST')) {
-        showToast(value);
-      }
-      _error.value = value;
-    }
   }
 
   void completed([String? value]) {
