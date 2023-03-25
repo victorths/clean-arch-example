@@ -12,7 +12,7 @@ PromotionModel _$PromotionModelFromJson(Map<String, dynamic> json) =>
       image: json['image'] as String?,
       price: (json['price'] as num?)?.toDouble(),
       oldPrice: (json['oldPrice'] as num?)?.toDouble(),
-      rate: json['rate'] as int?,
+      rate: json['rate'] as int? ?? 0,
       reviews: json['reviews'] as int?,
       freeShipping: json['freeShipping'] as bool? ?? false,
       discount: json['discount'] as int?,

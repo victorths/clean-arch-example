@@ -7,16 +7,21 @@ class PromotionsGrid extends StatelessWidget {
   const PromotionsGrid({
     super.key,
     required this.promotions,
+    required this.onAddItemToCart,
   });
 
   final List<PromotionEntity> promotions;
+  final void Function(PromotionEntity) onAddItemToCart;
 
   @override
   Widget build(BuildContext context) {
     return PromotionGridView(
       children: promotions
           .map(
-            (promotion) => PromotionItem(promotion: promotion),
+            (promotion) => PromotionItem(
+              promotion: promotion,
+              onAddItemToCart: onAddItemToCart,
+            ),
           )
           .toList(),
     );
@@ -27,9 +32,11 @@ class PromotionItem extends StatelessWidget {
   const PromotionItem({
     super.key,
     required this.promotion,
+    required this.onAddItemToCart,
   });
 
   final PromotionEntity promotion;
+  final void Function(PromotionEntity) onAddItemToCart;
 
   @override
   Widget build(BuildContext context) {
@@ -44,6 +51,8 @@ class PromotionItem extends StatelessWidget {
           child: promotion.image != null
               ? CachedNetworkImage(
                   imageUrl: promotion.image!,
+                  height: 120,
+                  alignment: Alignment.center,
                   placeholder: (context, url) => const SkeletonContainer(
                     height: 120,
                     width: double.infinity,
@@ -74,7 +83,100 @@ class PromotionItem extends StatelessWidget {
           promotion.name ?? '',
           style: Theme.of(context).textTheme.bodySmall,
         ),
+        Row(
+          children: [
+            StarsRate(rate: promotion.rate.toDouble()),
+            if (promotion.reviews != null)
+              Text(
+                '(${promotion.reviews})',
+                style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                      color: Theme.of(context).colorScheme.tertiary,
+                    ),
+              ),
+          ],
+        ),
+        if (promotion.oldPrice != null)
+          Text(
+            promotion.oldPrice!.formatNumber,
+            style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                  color: Theme.of(context).colorScheme.tertiary,
+                  decoration: TextDecoration.lineThrough,
+                  decorationColor: Theme.of(context).colorScheme.tertiary,
+                ),
+          ),
+        Row(
+          children: [
+            Text(
+              promotion.price!.formatNumber,
+              style: Theme.of(context).textTheme.titleMedium,
+            ),
+            if (promotion.discount != null)
+              Row(
+                children: [
+                  Icon(
+                    Icons.arrow_downward,
+                    color: Theme.of(context).colorScheme.scrim,
+                    size: 20,
+                  ),
+                  Text(
+                    '${promotion.discount.toString()}%',
+                    style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                          color: Theme.of(context).colorScheme.scrim,
+                        ),
+                  ),
+                ],
+              ),
+          ],
+        ),
+        // Aqui deveria ter a informação das parcelas, porém não existe tal informação sendo fornecida pelo backend
+        // Text(
+        //   promotion.installments,
+        //   style: Theme.of(context).textTheme.bodySmall!.copyWith(
+        //         color: Theme.of(context).colorScheme.scrim,
+        //       ),
+        // ),
+        const Expanded(
+          child: SizedBox(),
+        ),
+        SizedBox(
+          width: double.infinity,
+          child: FilledButton(
+            onPressed: () {
+              onAddItemToCart(promotion);
+              showToast(context, 'Produto adicionado ao carrinho');
+            },
+            child: const Text('Comprar'),
+          ),
+        )
       ],
+    );
+  }
+}
+
+class StarsRate extends StatelessWidget {
+  const StarsRate({
+    super.key,
+    this.rate = 0,
+  });
+
+  final double rate;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [for (int i = 1; i <= 5; i++) _buildIcon(i, rate, context)],
+    );
+  }
+
+  Widget _buildIcon(int i, double rate, BuildContext context) {
+    return Icon(
+      rate >= i
+          ? Icons.star
+          : rate > i - 1
+              ? Icons.star_half
+              : Icons.star_border,
+      color: const Color(0xFFF8CD46),
     );
   }
 }

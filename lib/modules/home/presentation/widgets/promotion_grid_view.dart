@@ -16,7 +16,7 @@ class PromotionGridView extends StatelessWidget {
         physics: const NeverScrollableScrollPhysics(),
         shrinkWrap: true,
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          childAspectRatio: .5,
+          mainAxisExtent: 350,
           crossAxisCount: 2,
           crossAxisSpacing: 16,
           mainAxisSpacing: 16,

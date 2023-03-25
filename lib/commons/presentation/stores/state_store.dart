@@ -1,9 +1,4 @@
-import 'dart:io';
-
-import 'package:get/get.dart';
-import 'package:oktoast/oktoast.dart';
-
-import '../../domain/entities/enums.dart';
+import '../../commons.dart';
 
 abstract class StateStore {
   final Rx<StateStoreStatus> _status =
@@ -23,11 +18,6 @@ abstract class StateStore {
 
   void completed([String? value]) {
     _status.value = StateStoreStatus.completed;
-    if (value != null && value.isNotEmpty) {
-      if (!Platform.environment.containsKey('FLUTTER_TEST')) {
-        showToast(value);
-      }
-    }
   }
 
   void loading() => _status.value = StateStoreStatus.loading;

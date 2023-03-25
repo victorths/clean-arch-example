@@ -19,24 +19,25 @@ class CustomCartIcon extends StatelessWidget {
             size: 20,
           ),
         ),
-        Positioned(
-          top: 6,
-          right: 10,
-          child: Container(
-            width: 12,
-            height: 12,
-            decoration: BoxDecoration(
-              color: Theme.of(context).primaryColor,
-              borderRadius: BorderRadius.circular(100),
-            ),
-            child: Center(
-              child: Text(
-                itemsOnCart.toString(),
-                style: Theme.of(context).textTheme.labelSmall,
+        if (itemsOnCart > 0)
+          Positioned(
+            top: 6,
+            right: 10,
+            child: Container(
+              width: 12,
+              height: 12,
+              decoration: BoxDecoration(
+                color: Theme.of(context).primaryColor,
+                borderRadius: BorderRadius.circular(100),
+              ),
+              child: Center(
+                child: Text(
+                  itemsOnCart.toString(),
+                  style: Theme.of(context).textTheme.labelSmall,
+                ),
               ),
             ),
-          ),
-        )
+          )
       ],
     );
   }

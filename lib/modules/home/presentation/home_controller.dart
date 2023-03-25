@@ -1,3 +1,4 @@
+import 'package:eng_gruposbf_mobile_flutter/modules/home/domain/entities/promotion.dart';
 import 'package:eng_gruposbf_mobile_flutter/modules/home/domain/use_cases/get_promotions.dart';
 
 import '../../../commons/commons.dart';
@@ -32,5 +33,10 @@ class HomeController extends PageLifeCycleController<HomeStore> {
     } on Exception catch (e) {
       store.error = e;
     }
+  }
+
+  void addItemOnCart(PromotionEntity promotion) {
+    cartStore.itemsOnCart[promotion] =
+        (cartStore.itemsOnCart[promotion] ?? 0) + 1;
   }
 }

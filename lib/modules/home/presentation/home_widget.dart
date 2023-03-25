@@ -36,8 +36,11 @@ class _HomeWidgetState extends ModularInjector<HomeWidget, HomeController> {
             Obx(
               () => StateObserver(
                 state: controller.store.status,
-                onCompleted: (context) =>
-                    PromotionsGrid(promotions: controller.store.promotions),
+                onCompleted: (context) => PromotionsGrid(
+                  promotions: controller.store.promotions,
+                  onAddItemToCart: (promotion) =>
+                      controller.addItemOnCart(promotion),
+                ),
                 onLoading: (context) => const PromotionsLoading(),
                 onError: (context) => ErrorWidget(controller.store.error!),
               ),
@@ -60,7 +63,7 @@ class _HomeWidgetState extends ModularInjector<HomeWidget, HomeController> {
       title: Image.asset(Assets.logo),
       actions: [
         Obx(() => CustomCartIcon(
-              itemsOnCart: controller.cartStore.itemsOnCart,
+              itemsOnCart: controller.cartStore.itemsOnCartCount,
             )),
       ],
       bottom: PreferredSize(
