@@ -1,9 +1,7 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:oktoast/oktoast.dart';
 
-import '../../../commons/presentation/navigation/routes.dart';
+import '../../../commons/commons.dart';
 
 class AppWidget extends StatelessWidget {
   const AppWidget({Key? key}) : super(key: key);
@@ -17,7 +15,37 @@ class AppWidget extends StatelessWidget {
       textPadding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
       child: MaterialApp.router(
         title: 'Centauro',
-        theme: ThemeData(colorSchemeSeed: const Color(0xFFE30000)),
+        theme: ThemeData(
+          useMaterial3: true,
+          colorScheme: const ColorScheme(
+            brightness: Brightness.light,
+            primary: Color(0xFFE30000),
+            onPrimary: Colors.white,
+            secondary: Color(0xFF4D4D4D),
+            onSecondary: Colors.white,
+            error: Color(0xFF4D4D4D),
+            onError: Colors.white,
+            background: Colors.white,
+            onBackground: Color(0xFFD6D6D6),
+            surface: Colors.white,
+            onSurface: Color(0xFFE30000),
+          ),
+          textTheme: const TextTheme(
+            bodyLarge: TextStyle(
+              fontWeight: FontWeight.w400,
+              fontSize: 14,
+              color: Color(0xFF999999),
+            ),
+            labelSmall: TextStyle(
+              fontWeight: FontWeight.w600,
+              fontSize: 9,
+              color: Colors.white,
+            ),
+          ),
+          iconTheme: const IconThemeData(
+            color: Color(0xFFE30000),
+          ),
+        ),
         routeInformationParser: Modular.routeInformationParser,
         routerDelegate: Modular.routerDelegate,
         localizationsDelegates: const [

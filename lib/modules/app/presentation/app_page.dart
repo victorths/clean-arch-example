@@ -1,13 +1,19 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
+import '../../../commons/commons.dart';
 
 class AppPage extends StatelessWidget {
   const AppPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: RouterOutlet(),
+    return Scaffold(
+      bottomNavigationBar: Container(
+        color: const Color(0xFFE3E3E3),
+        child: SafeArea(
+          bottom: true,
+          child: Image.asset(Assets.logoBlack),
+        ),
+      ),
+      body: const RouterOutlet(),
     );
   }
 }

@@ -1,6 +1,4 @@
-import 'package:eng_gruposbf_mobile_flutter/commons/utils/modular_injector.dart';
-import 'package:flutter/material.dart';
-
+import '../../commons/commons.dart';
 import 'cart_controller.dart';
 
 class CartWidget extends StatefulWidget {
@@ -13,6 +11,18 @@ class CartWidget extends StatefulWidget {
 class _CartWidgetState extends ModularInjector<CartWidget, CartController> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          onPressed: () => Navigator.of(context).pop(),
+          icon: const Icon(
+            Icons.arrow_back,
+          ),
+        ),
+      ),
+      body: const Center(
+        child: Text('This is CART'),
+      ),
+    );
   }
 }

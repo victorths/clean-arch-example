@@ -6,6 +6,6 @@ abstract class Routes {
 
 abstract class Paths {
   static const root = '/';
-  static const home = '/home';
-  static const cart = '/cart';
+  static const home = '/home/';
+  static const cart = '/cart/';
 }

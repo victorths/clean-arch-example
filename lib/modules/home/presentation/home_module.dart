@@ -1,8 +1,6 @@
-import 'package:eng_gruposbf_mobile_flutter/modules/home/home_controller.dart';
-import 'package:eng_gruposbf_mobile_flutter/modules/home/home_store.dart';
-import 'package:flutter_modular/flutter_modular.dart';
-
-import '../../commons/presentation/navigation/routes.dart';
+import '../../../commons/commons.dart';
+import 'home_controller.dart';
+import 'home_store.dart';
 import 'home_widget.dart';
 
 class HomeModule extends Module {
@@ -11,6 +9,7 @@ class HomeModule extends Module {
         Bind.singleton(
           (i) => HomeController(
             store: HomeStore(),
+            cartStore: i(),
           ),
         ),
       ];

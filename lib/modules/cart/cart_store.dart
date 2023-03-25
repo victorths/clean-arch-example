@@ -1,3 +1,6 @@
-import '../../commons/presentation/stores/state_store.dart';
+import '../../commons/commons.dart';
 
-class CartStore extends StateStore {}
+class CartStore extends StateStore {
+  // Temporário até finalizar o módulo de carrinho
+  int get itemsOnCart => 2.obs.value;
+}
