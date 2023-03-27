@@ -1,4 +1,5 @@
 import 'package:eng_gruposbf_mobile_flutter/commons/data/infra/dio_datasource.dart';
+import 'package:eng_gruposbf_mobile_flutter/commons/presentation/pages/error_page.dart';
 
 import '../../../commons/commons.dart';
 import '../../cart/presentation/cart_module.dart';
@@ -22,6 +23,10 @@ class AppModule extends Module {
         ModuleRoute(
           Paths.home,
           module: HomeModule(),
+        ),
+        ChildRoute(
+          Paths.error,
+          child: (context, args) => const ErrorPage(),
         ),
         ModuleRoute(
           Paths.cart,

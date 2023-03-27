@@ -30,8 +30,9 @@ class HomeController extends PageLifeCycleController<HomeStore> {
       // Coloquei um delay pra mostrar o loading haha
       await 1.delay();
       store.completed();
-    } on Exception catch (e) {
-      store.error = e;
+    } on Exception {
+      await Modular.to.pushNamed(Routes.error);
+      fetchPromotions();
     }
   }
 
