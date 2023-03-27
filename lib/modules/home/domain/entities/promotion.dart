@@ -12,6 +12,9 @@ class PromotionEntity extends Equatable {
   final String? id;
   final int? colors;
 
+  // Só pra ter um valor caso o frete n seja grátis
+  double get shippingValue => freeShipping ? 0 : 19.99;
+
   const PromotionEntity({
     required this.name,
     required this.image,

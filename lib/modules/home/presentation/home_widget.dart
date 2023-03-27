@@ -42,7 +42,11 @@ class _HomeWidgetState extends ModularInjector<HomeWidget, HomeController> {
                       controller.addItemOnCart(promotion),
                 ),
                 onLoading: (context) => const PromotionsLoading(),
-                onError: (context) => ErrorWidget(controller.store.error!),
+                onError: (context) => Text(
+                  'Erro ao consultar promoções!',
+                  style: Theme.of(context).textTheme.bodySmall,
+                  textAlign: TextAlign.center,
+                ),
               ),
             ),
             const SizedBox(

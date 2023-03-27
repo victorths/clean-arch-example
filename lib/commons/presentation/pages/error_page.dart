@@ -1,7 +1,12 @@
 import '../../commons.dart';
 
 class ErrorPage extends StatelessWidget {
-  const ErrorPage({super.key});
+  const ErrorPage({
+    super.key,
+    required this.onRetry,
+  });
+
+  final VoidCallback onRetry;
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +54,10 @@ class ErrorPage extends StatelessWidget {
               CustomFilledButtom(
                 text: 'Atualizar página',
                 size: CustomFilledButtomSize.large,
-                onPressed: Navigator.of(context).pop,
+                onPressed: () {
+                  Navigator.of(context).pop();
+                  onRetry();
+                },
               )
             ],
           ),

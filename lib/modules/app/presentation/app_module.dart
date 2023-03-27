@@ -9,7 +9,7 @@ import '../../home/presentation/home_module.dart';
 class AppModule extends Module {
   @override
   List<Bind> get binds => [
-        // Essa dependência é compartilhada para exibição da quantidade de items no carrinho no AppBar
+        // Essa dependência é compartilhada para exibição da quantidade de items no carrinho na Home
         Bind.singleton(
           (i) => CartStore(),
         ),
@@ -26,7 +26,11 @@ class AppModule extends Module {
         ),
         ChildRoute(
           Paths.error,
-          child: (context, args) => const ErrorPage(),
+          child: (context, args) => ErrorPage(
+            onRetry: () {
+              args.data?.call();
+            },
+          ),
         ),
         ModuleRoute(
           Paths.cart,

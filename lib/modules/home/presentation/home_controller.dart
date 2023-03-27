@@ -30,14 +30,18 @@ class HomeController extends PageLifeCycleController<HomeStore> {
       // Coloquei um delay pra mostrar o loading haha
       await 1.delay();
       store.completed();
-    } on Exception {
-      await Modular.to.pushNamed(Routes.error);
-      fetchPromotions();
+    } on Exception catch (e) {
+      store.error = e;
+      navigateToErrorPage();
     }
   }
 
   void addItemOnCart(PromotionEntity promotion) {
     cartStore.itemsOnCart[promotion] =
         (cartStore.itemsOnCart[promotion] ?? 0) + 1;
+  }
+
+  void navigateToErrorPage() {
+    Modular.to.pushNamed(Routes.error, arguments: fetchPromotions);
   }
 }
