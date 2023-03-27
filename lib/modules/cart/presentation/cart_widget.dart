@@ -41,7 +41,17 @@ class _CartWidgetState extends ModularInjector<CartWidget, CartController> {
                     ),
                     Expanded(
                       child: controller.store.itemsOnCartCount > 0
-                          ? const CartItemList()
+                          ? CartItemList(
+                              itemsOnCart: controller.store.itemsOnCart,
+                              interactWithItemCount: (item, interaction) =>
+                                  interaction == 0
+                                      ? controller.store.itemsOnCart
+                                          .remove(item)
+                                      : controller.store.itemsOnCart.update(
+                                          item,
+                                          (value) => value + interaction,
+                                        ),
+                            )
                           : const EmptyCartPanel(),
                     ),
                     CustomFilledButtom(

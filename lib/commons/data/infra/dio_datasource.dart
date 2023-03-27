@@ -13,7 +13,7 @@ class DioDatasource implements RemoteDatasource {
 
   DioDatasource([this._interceptor = const []]) {
     _dio.interceptors.addAll(_interceptor);
-    _dio.options.baseUrl = 'http://localhost:3000';
+    _dio.options.baseUrl = 'http://192.168.0.102:3000';
   }
 
   @override

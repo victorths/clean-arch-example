@@ -20,10 +20,11 @@ class PromotionEntity extends Equatable {
     this.rate = 0,
     required this.reviews,
     this.freeShipping = false,
-    required this.discount,
+    required int? discount,
     required this.id,
     required this.colors,
-  });
+    // Tinha um bug na informação do desconto
+  }) : discount = 100 - (discount ?? 100);
 
   @override
   List<Object?> get props =>

@@ -1,5 +1,5 @@
 import 'package:eng_gruposbf_mobile_flutter/modules/home/domain/entities/promotion.dart';
-import 'package:eng_gruposbf_mobile_flutter/modules/home/domain/use_cases/get_promotions.dart';
+import 'package:eng_gruposbf_mobile_flutter/modules/home/domain/use_cases/get_promotions_use_case.dart';
 
 import '../../../commons/commons.dart';
 import '../../cart/presentation/cart_store.dart';

@@ -59,6 +59,7 @@ class _HomeWidgetState extends ModularInjector<HomeWidget, HomeController> {
     // O Hand-off diz q o header será o mesmo para todas as telas porém na tela de carrinho o AppBar difere muito desse e para
     // evitar colocar condicionais para exibir/omitir os componentes do AppBar preferi separa-los
     return AppBar(
+      centerTitle: true,
       backgroundColor: Colors.white,
       title: Image.asset(Assets.logo),
       actions: [

@@ -41,43 +41,39 @@ class PromotionItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Padding(
           padding: const EdgeInsets.symmetric(
             horizontal: 16,
             vertical: 18,
           ),
-          child: promotion.image != null
-              ? CachedNetworkImage(
-                  imageUrl: promotion.image!,
-                  height: 120,
-                  alignment: Alignment.center,
-                  placeholder: (context, url) => const SkeletonContainer(
-                    height: 120,
-                    width: double.infinity,
-                  ),
-                  errorWidget: (context, url, error) => const Placeholder(),
-                )
-              : const Placeholder(),
+          child: CustomCachedNetworkImage(
+            image: promotion.image,
+            size: const Size.square(120),
+          ),
         ),
         if (promotion.freeShipping)
-          Container(
-            decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.secondary,
-                borderRadius: BorderRadius.circular(4)),
-            padding: const EdgeInsets.symmetric(
-              horizontal: 8,
-              vertical: 4,
-            ),
-            margin: const EdgeInsets.only(bottom: 4),
-            child: Text(
-              'Frete grátis',
-              style: Theme.of(context)
-                  .textTheme
-                  .labelMedium!
-                  .copyWith(color: Colors.white),
-            ),
+          Row(
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                    color: Theme.of(context).colorScheme.secondary,
+                    borderRadius: BorderRadius.circular(4)),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 8,
+                  vertical: 4,
+                ),
+                margin: const EdgeInsets.only(bottom: 4),
+                child: Text(
+                  'Frete grátis',
+                  style: Theme.of(context)
+                      .textTheme
+                      .labelMedium!
+                      .copyWith(color: Colors.white),
+                ),
+              ),
+            ],
           ),
         Text(
           promotion.name ?? '',

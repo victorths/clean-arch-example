@@ -1,6 +1,7 @@
 import '../commons.dart';
 
 void showToast(BuildContext context, String message) {
+  ScaffoldMessenger.of(context).clearSnackBars();
   ScaffoldMessenger.of(context).showSnackBar(
     SnackBar(
       duration: 3.seconds,

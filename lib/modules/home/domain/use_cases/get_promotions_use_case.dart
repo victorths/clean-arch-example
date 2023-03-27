@@ -1,6 +1,6 @@
 import 'package:eng_gruposbf_mobile_flutter/modules/home/domain/entities/promotion.dart';
 
-import '../repositories/product.dart';
+import '../repositories/product_repository.dart';
 
 abstract class GetPromotionsUseCase {
   Future<List<PromotionEntity>> call();

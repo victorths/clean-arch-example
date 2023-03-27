@@ -47,6 +47,11 @@ class AppWidget extends StatelessWidget {
             height: 1.2,
             color: Color(0xFF1A1A1A),
           ),
+          titleSmall: TextStyle(
+            fontWeight: FontWeight.w700,
+            fontSize: 14,
+            color: Color(0xFF1A1A1A),
+          ),
           bodyLarge: TextStyle(
             fontWeight: FontWeight.w400,
             fontSize: 14,
@@ -61,6 +66,7 @@ class AppWidget extends StatelessWidget {
           labelLarge: TextStyle(
             fontWeight: FontWeight.w700,
             fontSize: 12,
+            color: Color(0xFF1A1A1A),
           ),
           labelMedium: TextStyle(
             fontSize: 11,
